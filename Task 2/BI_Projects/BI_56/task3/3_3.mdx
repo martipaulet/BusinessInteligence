@@ -1,0 +1,7 @@
+SELECT
+  TOPCOUNT([Customer.FullName].[FullName].Members, 10, [Measures].[Profit]) ON ROWS,
+  {[Measures].[Profit]} ON COLUMNS
+FROM
+  [bike_sales]
+WHERE
+  [OrderDate.Days].[2021].[1] : [OrderDate.Days].[2021].[6]

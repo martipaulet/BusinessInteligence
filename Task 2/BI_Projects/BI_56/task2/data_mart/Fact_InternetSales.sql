@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS Fact_InternetSales (
+    SalesOrderLineNumber VARCHAR(50) NOT NULL,
+    SalesOrderNumber VARCHAR(30) NOT NULL,
+    OrderDateKey INT NOT NULL,
+    OrderDate DATE,
+    DueDateKey INT NOT NULL,
+    DueDate DATE,
+    ShipDateKey INT NOT NULL,
+    ShipDate DATE,
+    ProductKey INT NOT NULL,
+    CustomerKey INT NOT NULL,
+    ShipToLocationKey INT NOT NULL,
+    OrderStatus VARCHAR(50) NOT NULL,
+    ShipMethod VARCHAR(50) NOT NULL,
+    OrderQty INT NOT NULL,
+    UnitPrice DECIMAL(13, 4) NOT NULL,
+    OrderLineTotal DECIMAL(13, 4) NOT NULL,
+    OrderLineProfit DECIMAL(13, 4) NOT NULL,
+    OrderLineTaxAmt DECIMAL(13, 4) NOT NULL,
+    OrderLineShippingCost DECIMAL(13, 4) NOT NULL,
+
+    CONSTRAINT PK_FactInternetSales PRIMARY KEY (SalesOrderLineNumber),
+
+    CONSTRAINT FK_OrderDate_FactInternetSales FOREIGN KEY (OrderDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_DueDate_FactInternetSales FOREIGN KEY (DueDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_ShipDate_FactInternetSales FOREIGN KEY (ShipDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_Product_FactInternetSales FOREIGN KEY (ProductKey) REFERENCES Dim_Product(ProductKey),
+    CONSTRAINT FK_Customer_FactInternetSales FOREIGN KEY (CustomerKey) REFERENCES Dim_Customer(CustomerKey),
+    CONSTRAINT FK_Location_FactInternetSales FOREIGN KEY (ShipToLocationKey) REFERENCES Dim_Location(LocationKey)
+);

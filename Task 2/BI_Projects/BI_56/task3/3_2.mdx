@@ -1,0 +1,7 @@
+SELECT
+  ORDER([ShippedTo.Territory].[Country].Members, [Measures].[Revenue], BDESC) ON ROWS,
+  {[Measures].[Revenue]} ON COLUMNS
+FROM
+  [bike_sales]
+WHERE
+  [OrderDate].[Year].[2019]

@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Dim_Customer (
+    CustomerKey INT NOT NULL,
+    AccountNumber VARCHAR(30) NOT NULL,
+    FullName VARCHAR(150),
+    Gender VARCHAR(1),
+    Age INT,
+    
+    CONSTRAINT PK_DimCustomer PRIMARY KEY (CustomerKey)
+);

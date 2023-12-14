@@ -1,0 +1,7 @@
+SELECT 
+    TOPCOUNT([Customer.FullName].[FullName].Members,5,[Measures].[Quantity]) ON ROWS,
+    {[Measures].[Quantity]} ON COLUMNS
+FROM 
+    [bike_sales]
+WHERE
+    [ShippedTo.Territory].[Region].[Europe]
